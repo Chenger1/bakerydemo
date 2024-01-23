@@ -38,7 +38,7 @@ WAGTAILADMIN_BASE_URL = env.str("DJANGO_WAGTAILADMIN_BASE_URL", default="http://
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Uncomment this (and adjust as appropriate) to enable django-debug-toolbar
 # INTERNAL_IPS = [
