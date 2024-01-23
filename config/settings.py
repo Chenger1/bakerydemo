@@ -196,6 +196,7 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
+CSRF_TRUSTED_ORIGINS = ["localhost", "https://wagtail.avada-media-dev1.od.ua"]
 
 DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static_nodejs"
 DJANGO_VITE_STATIC_URL_PREFIX = "nodejs"
