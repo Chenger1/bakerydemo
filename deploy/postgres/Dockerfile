@@ -1,2 +1,2 @@
-FROM postgres:15
+FROM postgres:15-bullseye
 CMD ["docker-entrypoint.sh", "postgres"]
