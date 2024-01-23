@@ -1,6 +1,7 @@
 import os
 
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage, default_storage
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
@@ -23,6 +24,13 @@ class Command(BaseCommand):
                 default_storage.save(path + file_name, file_)
 
     def handle(self, **options):
+        if not User.objects.filter(is_superuser=True).exists():
+            User.objects.create_superuser(
+                username="admin",
+                email="admin@example.com",
+                password="changeme"
+            )
+
         fixtures_dir = os.path.join(settings.PROJECT_DIR, "base", "fixtures")
         fixture_file = os.path.join(fixtures_dir, "bakerydemo.json")
 
