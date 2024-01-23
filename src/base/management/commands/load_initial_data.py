@@ -24,13 +24,6 @@ class Command(BaseCommand):
                 default_storage.save(path + file_name, file_)
 
     def handle(self, **options):
-        if not User.objects.filter(is_superuser=True).exists():
-            User.objects.create_superuser(
-                username="admin",
-                email="admin@example.com",
-                password="changeme"
-            )
-
         fixtures_dir = os.path.join(settings.PROJECT_DIR, "base", "fixtures")
         fixture_file = os.path.join(fixtures_dir, "bakerydemo.json")
 
