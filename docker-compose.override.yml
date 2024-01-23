@@ -10,7 +10,7 @@ services:
       context: ./deploy/nginx
       dockerfile: local.Dockerfile
     ports:
-      - "8000:80"
+      - "3024:80"
     volumes:
       - static_volume:/usr/src/app/collect_static
       - media_volume:/usr/src/app/media
