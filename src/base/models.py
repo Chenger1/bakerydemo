@@ -454,6 +454,9 @@ class FormPage(AbstractEmailForm):
         ),
     ]
 
+    def send_mail(self, form):
+        pass
+
 
 @register_setting
 class GenericSettings(ClusterableModel, BaseGenericSetting):

@@ -38,7 +38,7 @@ WAGTAILADMIN_BASE_URL = env.str("DJANGO_WAGTAILADMIN_BASE_URL", default="http://
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Uncomment this (and adjust as appropriate) to enable django-debug-toolbar
 # INTERNAL_IPS = [
@@ -145,16 +145,16 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if "DATABASE_URL" in os.environ:
-    DATABASES = {"default": dj_database_url.config(conn_max_age=500)}
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "bakerydemodb"),
-        }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": env("POSTGRES_DB"),
+        "USER": env("POSTGRES_USER"),
+        "PASSWORD": env("POSTGRES_PASSWORD"),
+        "HOST": env("POSTGRES_HOST"),
+        "PORT": env("POSTGRES_PORT"),
     }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -196,6 +196,7 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
+CSRF_TRUSTED_ORIGINS = ["http://localhost", "https://wagtail.avada-media-dev1.od.ua"]
 
 DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static_nodejs"
 DJANGO_VITE_STATIC_URL_PREFIX = "nodejs"

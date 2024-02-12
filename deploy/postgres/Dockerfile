@@ -1,3 +1,2 @@
-FROM postgres:15
-#COPY init.sql /docker-entrypoint-initdb.d
-#CMD ["docker-entrypoint.sh", "postgres"]
+FROM postgres:15-bullseye
+CMD ["docker-entrypoint.sh", "postgres"]

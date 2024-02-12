@@ -21,7 +21,7 @@ vite:
 
 docker-run:
 	$(MANAGE) migrate
-	$(MANAGE) load_initial_data
+	#$(MANAGE) load_initial_data
 	$(MANAGE) runserver 0.0.0.0:$(WSGI_PORT)
 
 migrate:
